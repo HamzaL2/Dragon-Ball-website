@@ -9,3 +9,19 @@ body {
   background-color: black;
   color: white;
 }
+
+/* ---- NAVIGATIE ---- */
+
+#navigatie {
+  background-color: orange;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+#site-titel {
+  color: black;
+  font-size: 26px;
+}
