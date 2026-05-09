@@ -220,3 +220,63 @@ body {
   object-fit: cover;
   border-radius: 5px;
 }
+
+/* ---- FAVORIETEN ---- */
+
+#favoriten-sectie {
+  padding: 25px;
+  background-color: #222222;
+  margin-top: 20px;
+}
+
+#favoriten-titel {
+  color: orange;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+#favoriten-lijst {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+#geen-favorieten {
+  color: lightgray;
+  font-size: 14px;
+}
+
+.favoriet-item {
+  background-color: #333333;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.favoriet-foto {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.favoriet-naam {
+  color: white;
+  font-size: 14px;
+}
+
+.verwijder-knop {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.verwijder-knop:hover {
+  background-color: darkred;
+}
