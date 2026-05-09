@@ -34,8 +34,8 @@
           <option value="">Sorteer op...</option>
           <option value="naam-az">Naam (A-Z)</option>
           <option value="naam-za">Naam (Z-A)</option>
-          <option value="ki-laag">Power Level (laag naar hoog)</option>
-          <option value="ki-hoog">Power Level (hoog naar laag)</option>
+          <option value="ki-laag">Power Level (laag → hoog)</option>
+          <option value="ki-hoog">Power Level (hoog → laag)</option>
         </select>
       </div>
 
@@ -80,5 +80,14 @@
       </div>
     </section>
 
+    <!-- Detail popup -->
+    <div id="detail-modal" class="verborgen">
+      <div id="modal-inhoud">
+        <button id="sluit-modal">X</button>
+        <div id="modal-data"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>

@@ -280,3 +280,73 @@ body {
 .verwijder-knop:hover {
   background-color: darkred;
 }
+
+/* ---- DETAIL MODAL ---- */
+
+#detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#modal-inhoud {
+  background-color: white;
+  color: black;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 480px;
+  width: 90%;
+  position: relative;
+}
+
+#sluit-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#sluit-modal:hover {
+  background-color: darkred;
+}
+
+.modal-foto {
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+#modal-data h2 {
+  text-align: center;
+  color: orange;
+  margin-bottom: 12px;
+}
+
+#modal-data p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---- VERBORGEN ---- */
+
+.verborgen {
+  display: none !important;
+}
