@@ -44,7 +44,24 @@ async function haalCharactersOp() {
   const data = await response.json();
   console.log("API data ontvangen:", data);
 
-  return data;
+  // Ik maak van elk item een nieuw object met alleen wat ik nodig heb
+  const characters = data.items.map(function (item) {
+    const engelsBeschrijving = beschrijvingen[item.name] ? beschrijvingen[item.name] : "No description available for this character.";
+
+    return {
+      id: item.id,
+      naam: item.name,
+      ras: item.race,
+      geslacht: item.gender,
+      ki: item.ki,
+      maxKi: item.maxKi,
+      affiliation: item.affiliation,
+      beschrijving: engelsBeschrijving,
+      foto: item.image,
+    };
+  });
+
+  return characters;
 }
 
 export { haalCharactersOp };
