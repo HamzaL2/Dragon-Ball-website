@@ -136,3 +136,29 @@ body {
 .kaart:hover {
   transform: translateY(-6px);
 }
+
+.kaart-foto {
+  width: 150px;
+  height: 180px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+}
+
+.kaart-naam {
+  margin-top: 10px;
+  font-size: 15px;
+  color: orange;
+}
+
+.kaart-ras {
+  color: lightgray;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.kaart-ki {
+  color: yellow;
+  font-size: 13px;
+  margin-top: 4px;
+}
