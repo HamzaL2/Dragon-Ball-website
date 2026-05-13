@@ -76,3 +76,31 @@ body {
   font-size: 14px;
   cursor: pointer;
 }
+
+#weergave-knoppen {
+  display: flex;
+  gap: 8px;
+}
+
+#kaarten-knop,
+#tabel-knop {
+  padding: 8px 14px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#kaarten-knop:hover,
+#tabel-knop:hover {
+  background-color: white;
+  color: black;
+}
+
+#kaarten-knop.actief-knop,
+#tabel-knop.actief-knop {
+  background-color: white;
+  color: black;
+}
