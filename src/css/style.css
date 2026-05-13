@@ -162,3 +162,24 @@ body {
   font-size: 13px;
   margin-top: 4px;
 }
+
+/* ---- FAVORIET KNOP ---- */
+
+.favoriet-knop {
+  margin-top: 10px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: gray;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.favoriet-knop:hover {
+  transform: scale(1.3);
+  color: orange;
+}
+
+.favoriet-knop.actief {
+  color: orange;
+}
