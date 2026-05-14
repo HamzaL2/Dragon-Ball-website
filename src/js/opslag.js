@@ -30,4 +30,25 @@ function isFavoriet(id) {
   return favorieten.some((f) => f.id === id);
 }
 
-export { getFavorieten, slaFavorietOp, verwijderFavoriet, isFavoriet };
+// ---- WEERGAVE VOORKEUR ----
+
+function getWeergave() {
+  const weergave = localStorage.getItem("weergave");
+  if (weergave) {
+    return weergave;
+  }
+  return "kaarten";
+}
+
+function slaWeergaveOp(weergave) {
+  localStorage.setItem("weergave", weergave);
+}
+
+export {
+  getFavorieten,
+  slaFavorietOp,
+  verwijderFavoriet,
+  isFavoriet,
+  getWeergave,
+  slaWeergaveOp,
+};
