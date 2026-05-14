@@ -56,12 +56,14 @@ function maakKaart(character) {
     </button>
   `;
 
+  // Klik op kaart opent detail popup
   kaart.addEventListener("click", function (e) {
     if (!e.target.classList.contains("favoriet-knop")) {
       toonDetail(character);
     }
   });
 
+  // Klik op favoriet knop
   const favorietKnop = kaart.querySelector(".favoriet-knop");
   favorietKnop.addEventListener("click", function () {
     wisselFavoriet(character, favorietKnop);
@@ -174,6 +176,7 @@ function toonFavorieten() {
       verwijderFavoriet(character.id);
       toonFavorieten();
 
+      // Zet de hartjes terug naar leeg in de kaarten en tabel
       const alleKnoppen = document.querySelectorAll(
         `.favoriet-knop[data-id="${character.id}"]`
       );
