@@ -8,6 +8,7 @@
   </head>
   <body>
 
+    <!-- Navigatie bovenaan -->
     <nav id="navigatie">
       <h1 id="site-titel">Dragon Ball Z</h1>
 
@@ -33,8 +34,8 @@
           <option value="">Sorteer op...</option>
           <option value="naam-az">Naam (A-Z)</option>
           <option value="naam-za">Naam (Z-A)</option>
-          <option value="ki-laag">Power Level (laag naar hoog)</option>
-          <option value="ki-hoog">Power Level (hoog naar laag)</option>
+          <option value="ki-laag">Power Level (laag → hoog)</option>
+          <option value="ki-hoog">Power Level (hoog → laag)</option>
         </select>
       </div>
 
@@ -44,9 +45,13 @@
       </div>
     </nav>
 
+    <!-- Hoofdinhoud -->
     <main id="inhoud">
+
+      <!-- Kaarten weergave -->
       <div id="kaarten-weergave"></div>
 
+      <!-- Tabel weergave -->
       <div id="tabel-weergave" class="verborgen">
         <table id="characters-tabel">
           <thead>
@@ -64,8 +69,10 @@
           <tbody id="tabel-body"></tbody>
         </table>
       </div>
+
     </main>
 
+    <!-- Favorieten sectie onderaan -->
     <section id="favoriten-sectie">
       <h2 id="favoriten-titel">Mijn Favorieten</h2>
       <div id="favoriten-lijst">
@@ -73,5 +80,17 @@
       </div>
     </section>
 
+    <!-- Detail popup -->
+    <div id="detail-modal" class="verborgen">
+      <div id="modal-inhoud">
+        <button id="sluit-modal">X</button>
+        <div id="modal-data"></div>
+      </div>
+    </div>
+
+    <script type="module" src="./src/js/main.js"></script>
   </body>
 </html>
+
+
+    <!-- Code heb ik geordend/ mooier gemaakt kwa opmaakt door ai -->
