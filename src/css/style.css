@@ -322,3 +322,31 @@ body {
 #sluit-modal:hover {
   background-color: darkred;
 }
+
+.modal-foto {
+  width: 140px;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+#modal-data h2 {
+  text-align: center;
+  color: orange;
+  margin-bottom: 12px;
+}
+
+#modal-data p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---- VERBORGEN ---- */
+
+.verborgen {
+  display: none !important;
+}
