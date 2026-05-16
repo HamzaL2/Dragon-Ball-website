@@ -1,5 +1,7 @@
 // opslag.js - alles wat ik opsla in localStorage
 
+// ---- FAVORIETEN ----
+
 function getFavorieten() {
   const opgeslagen = localStorage.getItem("favorieten");
   if (opgeslagen) {
@@ -23,4 +25,30 @@ function verwijderFavoriet(id) {
   localStorage.setItem("favorieten", JSON.stringify(favorieten));
 }
 
-export { getFavorieten, slaFavorietOp, verwijderFavoriet };
+function isFavoriet(id) {
+  const favorieten = getFavorieten();
+  return favorieten.some((f) => f.id === id);
+}
+
+// ---- WEERGAVE VOORKEUR ----
+
+function getWeergave() {
+  const weergave = localStorage.getItem("weergave");
+  if (weergave) {
+    return weergave;
+  }
+  return "kaarten";
+}
+
+function slaWeergaveOp(weergave) {
+  localStorage.setItem("weergave", weergave);
+}
+
+export {
+  getFavorieten,
+  slaFavorietOp,
+  verwijderFavoriet,
+  isFavoriet,
+  getWeergave,
+  slaWeergaveOp,
+};
