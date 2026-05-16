@@ -32,3 +32,24 @@ function kiNaarGetal(kiString) {
   const getal = parseFloat(tekst);
   return isNaN(getal) ? 0 : getal;
 }
+
+// App opstarten
+async function startApp() {
+  const kaartenWeergave = document.getElementById("kaarten-weergave");
+  kaartenWeergave.innerHTML = "<p style='color: lightgray; text-align: center; margin-top: 30px;'>Characters laden...</p>";
+
+  try {
+    alleCharacters = await haalCharactersOp();
+
+    if (huidigeWeergave === "tabel") {
+      wisselNaarTabel();
+    } else {
+      wisselNaarKaarten();
+    }
+
+    toonFavorieten();
+  } catch (fout) {
+    console.error("Fout bij laden:", fout);
+    kaartenWeergave.innerHTML = "<p style='color: red; text-align: center; margin-top: 30px;'>Kon characters niet laden. Probeer de pagina te herladen.</p>";
+  }
+}
