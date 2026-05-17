@@ -23,6 +23,7 @@ function toonKaarten(characters) {
     kaartenWeergave.appendChild(kaart);
   });
 
+  // IntersectionObserver: kaarten worden zichtbaar als ze in beeld komen
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -55,12 +56,14 @@ function maakKaart(character) {
     </button>
   `;
 
+  // Klik op kaart opent detail popup
   kaart.addEventListener("click", function (e) {
     if (!e.target.classList.contains("favoriet-knop")) {
       toonDetail(character);
     }
   });
 
+  // Klik op favoriet knop
   const favorietKnop = kaart.querySelector(".favoriet-knop");
   favorietKnop.addEventListener("click", function () {
     wisselFavoriet(character, favorietKnop);
@@ -144,4 +147,46 @@ function toonDetail(character) {
   modal.classList.remove("verborgen");
 }
 
-export { toonKaarten, toonTabel, toonDetail };
+// ---- FAVORIETEN SECTIE ----
+
+function toonFavorieten() {
+  const favorietenLijst = document.getElementById("favoriten-lijst");
+  const favorieten = getFavorieten();
+
+  favorietenLijst.innerHTML = "";
+
+  if (favorieten.length === 0) {
+    favorietenLijst.innerHTML =
+      "<p id='geen-favorieten'>Nog geen favorieten opgeslagen.</p>";
+    return;
+  }
+
+  favorieten.forEach(function (character) {
+    const item = document.createElement("div");
+    item.classList.add("favoriet-item");
+
+    item.innerHTML = `
+      <img class="favoriet-foto" src="${character.foto}" alt="${character.naam}" />
+      <span class="favoriet-naam">${character.naam}</span>
+      <button class="verwijder-knop" data-id="${character.id}">Verwijder</button>
+    `;
+
+    const verwijderKnop = item.querySelector(".verwijder-knop");
+    verwijderKnop.addEventListener("click", function () {
+      verwijderFavoriet(character.id);
+      toonFavorieten();
+
+      // Zet de hartjes terug naar leeg in de kaarten en tabel
+      const alleKnoppen = document.querySelectorAll(
+        `.favoriet-knop[data-id="${character.id}"]`
+      );
+      alleKnoppen.forEach(function (knop) {
+        knop.textContent = "☆";
+      });
+    });
+
+    favorietenLijst.appendChild(item);
+  });
+}
+
+export { toonKaarten, toonTabel, toonDetail, toonFavorieten };
