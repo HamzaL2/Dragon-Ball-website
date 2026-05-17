@@ -109,4 +109,39 @@ function toonTabel(characters) {
   });
 }
 
-export { toonKaarten, toonTabel };
+// ---- FAVORIET TOGGLE ----
+
+function wisselFavoriet(character, knop) {
+  if (isFavoriet(character.id)) {
+    verwijderFavoriet(character.id);
+    knop.textContent = "☆";
+    knop.classList.remove("actief");
+  } else {
+    slaFavorietOp(character);
+    knop.textContent = "★";
+    knop.classList.add("actief");
+  }
+  toonFavorieten();
+}
+
+// ---- DETAIL POPUP ----
+
+function toonDetail(character) {
+  const modal = document.getElementById("detail-modal");
+  const modalData = document.getElementById("modal-data");
+
+  modalData.innerHTML = `
+    <img class="modal-foto" src="${character.foto}" alt="${character.naam}" />
+    <h2>${character.naam}</h2>
+    <p><strong>Ras:</strong> ${character.ras}</p>
+    <p><strong>Geslacht:</strong> ${character.geslacht}</p>
+    <p><strong>Ki:</strong> ${character.ki}</p>
+    <p><strong>Max Ki:</strong> ${character.maxKi}</p>
+    <p><strong>Affiliation:</strong> ${character.affiliation}</p>
+    <p><strong>Beschrijving:</strong> ${character.beschrijving}</p>
+  `;
+
+  modal.classList.remove("verborgen");
+}
+
+export { toonKaarten, toonTabel, toonDetail };
