@@ -23,7 +23,6 @@ function toonKaarten(characters) {
     kaartenWeergave.appendChild(kaart);
   });
 
-  // IntersectionObserver: kaarten worden zichtbaar als ze in beeld komen
   const observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) {
@@ -70,4 +69,44 @@ function maakKaart(character) {
   return kaart;
 }
 
-export { toonKaarten };
+// ---- TABEL ----
+
+function toonTabel(characters) {
+  const tabelBody = document.getElementById("tabel-body");
+  tabelBody.innerHTML = "";
+
+  if (characters.length === 0) {
+    tabelBody.innerHTML =
+      "<tr><td colspan='8' style='color: lightgray;'>Geen characters gevonden.</td></tr>";
+    return;
+  }
+
+  characters.forEach(function (character) {
+    const isGefavoriet = isFavoriet(character.id);
+
+    const rij = document.createElement("tr");
+    rij.innerHTML = `
+      <td><img class="tabel-foto" src="${character.foto}" alt="${character.naam}" /></td>
+      <td>${character.naam}</td>
+      <td>${character.ras}</td>
+      <td>${character.geslacht}</td>
+      <td>${character.ki}</td>
+      <td>${character.maxKi}</td>
+      <td>${character.affiliation}</td>
+      <td>
+        <button class="favoriet-knop" data-id="${character.id}">
+          ${isGefavoriet ? "★" : "☆"}
+        </button>
+      </td>
+    `;
+
+    const favorietKnop = rij.querySelector(".favoriet-knop");
+    favorietKnop.addEventListener("click", function () {
+      wisselFavoriet(character, favorietKnop);
+    });
+
+    tabelBody.appendChild(rij);
+  });
+}
+
+export { toonKaarten, toonTabel };
