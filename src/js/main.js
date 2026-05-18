@@ -58,7 +58,6 @@ async function startApp() {
   }
 }
 
-// Filteren, zoeken en sorteren gecombineerd
 function filterEnSorteer() {
   const zoekterm = document.getElementById("zoekbalk").value.toLowerCase();
   const geselecteerdRas = document.getElementById("ras-filter").value;
@@ -85,6 +84,32 @@ function filterEnSorteer() {
   } else {
     toonTabel(resultaten);
   }
+}
+
+function wisselNaarKaarten() {
+  huidigeWeergave = "kaarten";
+  slaWeergaveOp("kaarten");
+
+  document.getElementById("kaarten-weergave").classList.remove("verborgen");
+  document.getElementById("tabel-weergave").classList.add("verborgen");
+
+  document.getElementById("kaarten-knop").classList.add("actief-knop");
+  document.getElementById("tabel-knop").classList.remove("actief-knop");
+
+  toonKaarten(alleCharacters);
+}
+
+function wisselNaarTabel() {
+  huidigeWeergave = "tabel";
+  slaWeergaveOp("tabel");
+
+  document.getElementById("kaarten-weergave").classList.add("verborgen");
+  document.getElementById("tabel-weergave").classList.remove("verborgen");
+
+  document.getElementById("tabel-knop").classList.add("actief-knop");
+  document.getElementById("kaarten-knop").classList.remove("actief-knop");
+
+  toonTabel(alleCharacters);
 }
 
 startApp();
