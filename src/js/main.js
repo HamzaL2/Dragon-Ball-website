@@ -138,4 +138,10 @@ document.getElementById("zoekbalk").addEventListener("keydown", function (e) {
   }
 });
 
+document.getElementById("ras-filter").addEventListener("change", filterEnSorteer);
+document.getElementById("sorteer-select").addEventListener("change", filterEnSorteer);
+
+document.getElementById("kaarten-knop").addEventListener("click", wisselNaarKaarten);
+document.getElementById("tabel-knop").addEventListener("click", wisselNaarTabel);
+
 startApp();
