@@ -112,4 +112,30 @@ function wisselNaarTabel() {
   toonTabel(alleCharacters);
 }
 
+// ---- EVENT LISTENERS ----
+
+document.getElementById("zoek-knop").addEventListener("click", function () {
+  const zoekterm = document.getElementById("zoekbalk").value;
+  const foutMelding = document.getElementById("zoek-fout");
+
+  if (zoekterm.trim() === "") {
+    foutMelding.textContent = "Vul iets in om te zoeken!";
+    return;
+  }
+
+  foutMelding.textContent = "";
+  filterEnSorteer();
+});
+
+document.getElementById("zoekbalk").addEventListener("input", function () {
+  document.getElementById("zoek-fout").textContent = "";
+  filterEnSorteer();
+});
+
+document.getElementById("zoekbalk").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    document.getElementById("zoek-knop").click();
+  }
+});
+
 startApp();
