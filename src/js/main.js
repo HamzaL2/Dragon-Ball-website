@@ -7,24 +7,20 @@ import { toonKaarten, toonTabel, toonFavorieten } from "./ui.js";
 let alleCharacters = [];
 let huidigeWeergave = getWeergave();
 
+// Zet een ki-string om naar een getal voor sortering
+// Bijvoorbeeld: "3,000,000" wordt 3000000, "2.5 Quadrillion" wordt 2500000000000000
 function kiNaarGetal(kiString) {
   if (!kiString || kiString === "Unknown") return 0;
 
   const tekst = kiString.replace(/,/g, "").toLowerCase().trim();
 
   const eenheden = {
-    thousand:    1_000,
-    million:     1_000_000,
-    billion:     1_000_000_000,
-    trillion:    1_000_000_000_000,
+    thousand: 1_000,
+    million: 1_000_000,
+    billion: 1_000_000_000,
+    trillion: 1_000_000_000_000,
     quadrillion: 1_000_000_000_000_000,
     quintillion: 1_000_000_000_000_000_000,
-    sextillion:  1_000_000_000_000_000_000_000,
-    septillion:  1_000_000_000_000_000_000_000_000,
-    octillion:   1_000_000_000_000_000_000_000_000_000,
-    nonillion:   1_000_000_000_000_000_000_000_000_000_000,
-    decillion:   1_000_000_000_000_000_000_000_000_000_000_000,
-    googolplex:  1e100,
   };
 
   for (const [woord, waarde] of Object.entries(eenheden)) {
@@ -38,6 +34,7 @@ function kiNaarGetal(kiString) {
   return isNaN(getal) ? 0 : getal;
 }
 
+// App opstarten
 async function startApp() {
   const kaartenWeergave = document.getElementById("kaarten-weergave");
   kaartenWeergave.innerHTML = "<p style='color: lightgray; text-align: center; margin-top: 30px;'>Characters laden...</p>";
@@ -45,6 +42,7 @@ async function startApp() {
   try {
     alleCharacters = await haalCharactersOp();
 
+    // Laad de opgeslagen weergave voorkeur
     if (huidigeWeergave === "tabel") {
       wisselNaarTabel();
     } else {
@@ -58,17 +56,20 @@ async function startApp() {
   }
 }
 
+// Filteren, zoeken en sorteren gecombineerd
 function filterEnSorteer() {
   const zoekterm = document.getElementById("zoekbalk").value.toLowerCase();
   const geselecteerdRas = document.getElementById("ras-filter").value;
   const sortering = document.getElementById("sorteer-select").value;
 
+  // Eerst filteren op zoekterm en ras
   let resultaten = alleCharacters.filter(function (character) {
     const naamKlopt = character.naam.toLowerCase().includes(zoekterm);
     const rasKlopt = geselecteerdRas === "" || character.ras === geselecteerdRas;
     return naamKlopt && rasKlopt;
   });
 
+  // Dan sorteren
   if (sortering === "naam-az") {
     resultaten.sort((a, b) => a.naam.localeCompare(b.naam));
   } else if (sortering === "naam-za") {
@@ -79,6 +80,7 @@ function filterEnSorteer() {
     resultaten.sort((a, b) => kiNaarGetal(b.ki) - kiNaarGetal(a.ki));
   }
 
+  // Toon het resultaat in de juiste weergave
   if (huidigeWeergave === "kaarten") {
     toonKaarten(resultaten);
   } else {
@@ -86,6 +88,7 @@ function filterEnSorteer() {
   }
 }
 
+// Wisselen naar kaarten weergave
 function wisselNaarKaarten() {
   huidigeWeergave = "kaarten";
   slaWeergaveOp("kaarten");
@@ -99,6 +102,7 @@ function wisselNaarKaarten() {
   toonKaarten(alleCharacters);
 }
 
+// Wisselen naar tabel weergave
 function wisselNaarTabel() {
   huidigeWeergave = "tabel";
   slaWeergaveOp("tabel");
@@ -114,6 +118,7 @@ function wisselNaarTabel() {
 
 // ---- EVENT LISTENERS ----
 
+// Zoekknop met validatie
 document.getElementById("zoek-knop").addEventListener("click", function () {
   const zoekterm = document.getElementById("zoekbalk").value;
   const foutMelding = document.getElementById("zoek-fout");
@@ -127,21 +132,38 @@ document.getElementById("zoek-knop").addEventListener("click", function () {
   filterEnSorteer();
 });
 
+// Zoeken terwijl je typt
 document.getElementById("zoekbalk").addEventListener("input", function () {
   document.getElementById("zoek-fout").textContent = "";
   filterEnSorteer();
 });
 
+// Enter toets in zoekbalk
 document.getElementById("zoekbalk").addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     document.getElementById("zoek-knop").click();
   }
 });
 
+// Filter en sorteer dropdowns
 document.getElementById("ras-filter").addEventListener("change", filterEnSorteer);
 document.getElementById("sorteer-select").addEventListener("change", filterEnSorteer);
 
+// Weergave knoppen
 document.getElementById("kaarten-knop").addEventListener("click", wisselNaarKaarten);
 document.getElementById("tabel-knop").addEventListener("click", wisselNaarTabel);
 
+// Detail popup sluiten
+document.getElementById("sluit-modal").addEventListener("click", function () {
+  document.getElementById("detail-modal").classList.add("verborgen");
+});
+
+// Popup sluiten door buiten te klikken
+document.getElementById("detail-modal").addEventListener("click", function (e) {
+  if (e.target === this) {
+    this.classList.add("verborgen");
+  }
+});
+
+// App starten
 startApp();
