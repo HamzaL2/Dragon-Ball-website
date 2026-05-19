@@ -139,3 +139,11 @@ document.getElementById("zoekbalk").addEventListener("keydown", function (e) {
     document.getElementById("zoek-knop").click();
   }
 });
+
+// Filter en sorteer dropdowns
+document.getElementById("ras-filter").addEventListener("change", filterEnSorteer);
+document.getElementById("sorteer-select").addEventListener("change", filterEnSorteer);
+
+// Weergave knoppen
+document.getElementById("kaarten-knop").addEventListener("click", wisselNaarKaarten);
+document.getElementById("tabel-knop").addEventListener("click", wisselNaarTabel);
