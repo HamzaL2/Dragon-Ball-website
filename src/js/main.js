@@ -147,3 +147,18 @@ document.getElementById("sorteer-select").addEventListener("change", filterEnSor
 // Weergave knoppen
 document.getElementById("kaarten-knop").addEventListener("click", wisselNaarKaarten);
 document.getElementById("tabel-knop").addEventListener("click", wisselNaarTabel);
+
+// Detail popup sluiten
+document.getElementById("sluit-modal").addEventListener("click", function () {
+  document.getElementById("detail-modal").classList.add("verborgen");
+});
+
+// Popup sluiten door buiten te klikken
+document.getElementById("detail-modal").addEventListener("click", function (e) {
+  if (e.target === this) {
+    this.classList.add("verborgen");
+  }
+});
+
+// App starten
+startApp();
