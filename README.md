@@ -93,7 +93,11 @@ http://localhost:5173
 
 ## Screenshots
 
+foto met zoekbalk en kaarten
+
 <img width="1883" height="927" alt="image" src="https://github.com/user-attachments/assets/9da9bdd1-2233-4d12-a47e-25d7e1fab4fa" />
+
+foto met kaarten en favorieten geselecteerd
 
 <img width="1888" height="926" alt="image" src="https://github.com/user-attachments/assets/f033f22a-69c6-45cd-add7-6861d1a73d7e" />
 
